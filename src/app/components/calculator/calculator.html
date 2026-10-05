@@ -1,0 +1,32 @@
+<section id="calculator" class="py-12 bg-white">
+  <div class="container mx-auto px-4 max-w-2xl">
+    <h2 class="text-3xl font-bold text-center mb-8">حاسبة الذهب</h2>
+
+    <div class="bg-gray-50 p-6 rounded-xl shadow-inner">
+      <div class="mb-4">
+        <label class="block text-gray-700 mb-2">اختر العيار</label>
+        <select [(ngModel)]="selectedKarat" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-yellow-500">
+          <option *ngFor="let k of karats" [value]="k">{{ k }}</option>
+        </select>
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-gray-700 mb-2">الوزن (جرام)</label>
+        <input type="number" [(ngModel)]="weight" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-yellow-500" placeholder="أدخل الوزن">
+      </div>
+
+      <button (click)="calculate()" class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 rounded-lg transition">
+        احسب
+      </button>
+
+      <div *ngIf="result !== null" class="mt-6 p-4 bg-yellow-100 border border-yellow-400 rounded-lg text-center">
+        <p class="text-gray-700">القيمة التقديرية:</p>
+        <p class="text-3xl font-bold text-yellow-800">{{ result }} ر.ع</p>
+      </div>
+
+      <div *ngIf="result === null" class="mt-6 p-4 bg-gray-100 rounded-lg text-center text-gray-500">
+        <p>أدخل الوزن واضغط احسب لعرض النتيجة</p>
+      </div>
+    </div>
+  </div>
+</section>
